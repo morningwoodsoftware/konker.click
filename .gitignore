@@ -1,0 +1,10 @@
+# Mac Default
+.DS_Store
+.AppleDouble
+.LSOverride
+
+certbot.log
+letsencrypt.log
+
+__scrap
+

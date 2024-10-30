@@ -1,0 +1,35 @@
+{
+  domainName: "konker.click",
+  extraDnsConfig: [
+      {
+        type: 'MX',
+        hostName: 'in1-smtp.messagingengine.com',
+        priority: 10,
+      },
+      {
+        type: 'MX',
+        hostName: 'in2-smtp.messagingengine.com',
+        priority: 20,
+      },
+      {
+        type: 'CNAME',
+        recordName: 'fm1._domainkey.konker.dev',
+        domainName: 'fm1.konker.dev.dkim.fmhosted.com',
+      },
+      {
+        type: 'CNAME',
+        recordName: 'fm2._domainkey.konker.dev',
+        domainName: 'fm2.konker.dev.dkim.fmhosted.com',
+      },
+      {
+        type: 'CNAME',
+        recordName: 'fm3._domainkey.konker.dev',
+        domainName: 'fm3.konker.dev.dkim.fmhosted.com',
+      },
+      {
+        type: 'TXT',
+        recordName: '',
+        values: ['v=spf1 include:spf.messagingengine.com ?all'],
+      },
+  ],
+}
