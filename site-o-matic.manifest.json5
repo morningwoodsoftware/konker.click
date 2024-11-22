@@ -1,5 +1,8 @@
 {
   domainName: "konker.click",
+  region: 'eu-west-1',
+  webmasterEmail: 'webmaster+konker.click@morningwoodsoftware.com',
+
   extraDnsConfig: [
       {
         type: 'MX',
@@ -32,4 +35,23 @@
         values: ['v=spf1 include:spf.messagingengine.com ?all'],
       },
   ],
+
+  webHosting: [
+    {
+      type: 'cloudfront-s3',
+      domainName: 'konker.click',
+      originPath: '/www'
+    },
+    {
+      type: 'cloudfront-s3',
+      domainName: 'dev.konker.click',
+      originPath: '/www-dev',
+      auth: {
+        type: 'basic-auth',
+        implementation: 'edge-cf-function',
+        usernameSecretName: 'dev.konker.click_basic_auth_username',
+        passwordSecretName: 'dev.konker.click_basic_auth_password',
+      }
+    }
+  ]
 }

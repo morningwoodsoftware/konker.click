@@ -7,11 +7,11 @@ on:
       - 'main'
 
 env:
-#  AWS_ACCESS_KEY_ID: ${{ secrets.DOMAIN_PUBLISHER_AWS_ACCESS_KEY_ID }}
-#  AWS_SECRET_ACCESS_KEY: ${{ secrets.DOMAIN_PUBLISHER_AWS_ACCESS_KEY_SECRET }}
+#  AWS_ACCESS_KEY_ID: ${{ secrets.DOMAIN_USER_AWS_ACCESS_KEY_ID }}
+#  AWS_SECRET_ACCESS_KEY: ${{ secrets.DOMAIN_USER_AWS_ACCESS_KEY_SECRET }}
   AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
   AWS_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}
-  AWS_DEFAULT_REGION: 'us-east-1'
+  AWS_DEFAULT_REGION: 'us-west-1'
   SOURCE_DIR: '.'
   DEST_DIR: '/'
 
@@ -27,8 +27,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.DOMAIN_PUBLISHER_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.DOMAIN_PUBLISHER_AWS_ACCESS_KEY_SECRET }}
+          aws-access-key-id: ${{ secrets.DOMAIN_USER_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DOMAIN_USER_AWS_ACCESS_KEY_SECRET }}
           aws-region: ${{ env.AWS_DEFAULT_REGION }}
 
       - name: Sync files to S3
