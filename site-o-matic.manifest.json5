@@ -52,6 +52,12 @@
         usernameSecretName: 'dev.konker.click_basic_auth_username',
         passwordSecretName: 'dev.konker.click_basic_auth_password',
       }
+    },
+    {
+      type: 'cloudfront-https',
+      domainName: 'echo.konker.click',
+      url: 'q8t5y5v9df.execute-api.eu-west-1.amazonaws.com',
+      originPath: '/'
     }
   ]
 }
