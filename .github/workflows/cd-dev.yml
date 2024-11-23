@@ -1,19 +1,19 @@
-name: CD
+name: CD dev.konker.click
 
 on:
   workflow_dispatch:
   push:
     branches:
       - 'main'
+    paths:
+      - '/www-dev'
 
 env:
-#  AWS_ACCESS_KEY_ID: ${{ secrets.DOMAIN_USER_AWS_ACCESS_KEY_ID }}
-#  AWS_SECRET_ACCESS_KEY: ${{ secrets.DOMAIN_USER_AWS_ACCESS_KEY_SECRET }}
   AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-  AWS_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}
-  AWS_DEFAULT_REGION: 'us-west-1'
-  SOURCE_DIR: '.'
-  DEST_DIR: '/'
+  AWS_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID_DEV }}
+  AWS_DEFAULT_REGION: 'eu-west-1'
+  SOURCE_DIR: './www-dev'
+  DEST_DIR: '/www-dev'
 
 jobs:
   cd:
@@ -41,13 +41,3 @@ jobs:
             --distribution-id ${{ env.AWS_CLOUDFRONT_DISTRIBUTION_ID }} \
             --paths "/*"
 
-#      - name: Sync to S3
-#        uses: ItsKarma/aws-cli@v1.70.0
-#        with:
-#          args: s3 sync --delete ${{env.SOURCE_DIR}} s3://${{env.AWS_S3_BUCKET}}${{env.DEST_DIR}}
-#      - name: Invalidate Cloudfront
-#        uses: ItsKarma/aws-cli@v1.70.0
-#        with:
-#          args: aws cloudfront create-invalidation \
-#            --distribution-id ${{ env.AWS_CLOUDFRONT_DISTRIBUTION_ID }} \
-#            --paths "/*"
