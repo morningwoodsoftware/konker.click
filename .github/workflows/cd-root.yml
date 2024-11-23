@@ -6,7 +6,7 @@ on:
     branches:
       - 'main'
     paths:
-      - '/www'
+      - 'www/**'
 
 env:
   AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
